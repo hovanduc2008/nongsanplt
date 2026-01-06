@@ -5,6 +5,7 @@ const path = require('path');
 
 const app = express();
 const PORT = 8080;
+const HOST = '0.0.0.0';
 
 // ================= VIEW ENGINE =================
 app.set('view engine', 'ejs');
@@ -455,6 +456,6 @@ setInterval(() => {
 }, 60 * 1000); // mỗi phút
 
 // ================= START SERVER =================
-app.listen(PORT, () => {
-    console.log(`🌾 Farm online: http://localhost:${PORT}`);
+app.listen( PORT, HOST, () => {
+   console.log(`🌾 Farm online: http://${HOST}:${PORT}`);
 });
