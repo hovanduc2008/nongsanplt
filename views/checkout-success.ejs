@@ -133,11 +133,13 @@
     <!-- 👤 TÊN NHÂN VẬT -->
     <div class="player-box">
         <span>👤 Nhân vật: <b id="playerName"><%= playerName %></b></span>
-        <button onclick="copyPlayer()">📋 Copy</button>
+        <button id="btnCopyPlayer">📋 Copy</button>
     </div>
 
     <!-- 🧾 MÃ ĐƠN -->
-    <div class="order-id">
+    <div class="order-id" id="orderData" 
+         data-order-id="<%= orderId %>" 
+         data-player-name="<%= playerName %>">
         🧾 Mã đơn: <%= orderId %>
     </div>
 
@@ -152,7 +154,7 @@
         <% }) %>
     </div>
 
-    <button class="btn-copy" onclick="copyOrder()">
+    <button class="btn-copy" id="btnCopyOrder">
         📋 Copy Đơn & Gửi Messenger
     </button>
 
@@ -166,17 +168,26 @@ function isMobile() {
     return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 }
 
-function copyPlayer() {
+// Copy tên nhân vật
+document.getElementById('btnCopyPlayer').addEventListener('click', () => {
     const name = document.getElementById('playerName').innerText;
+    if (!navigator.clipboard) {
+        alert("❌ Trình duyệt không hỗ trợ copy clipboard.");
+        return;
+    }
     navigator.clipboard.writeText(name).then(() => {
         alert('✅ Đã copy tên nhân vật!');
+    }).catch(err => {
+        console.error(err);
+        alert('❌ Không thể copy tên nhân vật.');
     });
-}
+});
 
-function copyOrder() {
-    let text = 
-`🧾 ĐƠN HÀNG <%= orderId %>
-👤 Nhân vật: <%= playerName %>
+// Copy toàn bộ đơn hàng & gửi Messenger
+document.getElementById('btnCopyOrder').addEventListener('click', () => {
+    const orderDiv = document.getElementById('orderData');
+    let text = `🧾 ĐƠN HÀNG ${orderDiv.dataset.orderId}
+👤 Nhân vật: ${orderDiv.dataset.playerName}
 
 `;
 
@@ -184,8 +195,13 @@ function copyOrder() {
         text += "- <%= i.product_name %> | <%= i.variant %> | SL: <%= i.quantity %>\n";
     <% }) %>
 
+    if (!navigator.clipboard) {
+        alert("❌ Trình duyệt không hỗ trợ copy clipboard.");
+        return;
+    }
+
     navigator.clipboard.writeText(text).then(() => {
-        const messengerId = "hai.nguyen.926111"; // 🔁 đổi nếu cần
+        const messengerId = "hai.nguyen.926111";
         const link = `https://m.me/${messengerId}`;
 
         if (isMobile()) {
@@ -193,8 +209,11 @@ function copyOrder() {
         } else {
             window.open(link, "_blank");
         }
+    }).catch(err => {
+        console.error("Clipboard write failed:", err);
+        alert("❌ Không thể copy đơn hàng, vui lòng thử lại.");
     });
-}
+});
 </script>
 
 </body>
