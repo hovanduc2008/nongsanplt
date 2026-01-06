@@ -54,5 +54,21 @@
     "variant": "Điện",
     "quantity": 1,
     "price": 6000
+  },
+  {
+    "order_id": "PT1767692385411",
+    "pv_id": 3,
+    "product_name": "Nhân sâm",
+    "variant": "Cầu Vồng",
+    "quantity": 1,
+    "price": 50000
+  },
+  {
+    "order_id": "PT1767692385411",
+    "pv_id": 1767678444896,
+    "product_name": "Dưa hấu",
+    "variant": "Điện",
+    "quantity": 1,
+    "price": 6000
   }
 ]
