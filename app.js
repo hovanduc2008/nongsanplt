@@ -8,7 +8,10 @@ const PORT = 8080;
 const HOST = '0.0.0.0';
 
 // ================= VIEW ENGINE =================
-app.set('view engine', 'ejs');
+// Cấu hình view engine
+app.set('view engine', 'ejs');          // EJS
+app.set('views', __dirname + '/views'); // Thư mục views
+
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 const { ensureAdmin } = require('./middlewares/auth');
