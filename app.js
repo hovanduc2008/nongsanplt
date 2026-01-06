@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 8080;
+const PORT = 80;
 const HOST = '0.0.0.0';
 
 // ================= VIEW ENGINE =================

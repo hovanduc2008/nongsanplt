@@ -41,7 +41,7 @@
   {
     "id": "PT1767694085830",
     "player_name": "dc",
-    "status": "pending",
+    "status": "cancelled",
     "created_at": 1767694085830,
     "expired_at": 1767694985830,
     "total": 56000
@@ -49,7 +49,7 @@
   {
     "id": "PT1767694302484",
     "player_name": "dd",
-    "status": "pending",
+    "status": "cancelled",
     "created_at": 1767694302484,
     "expired_at": 1767695202484,
     "total": 50000
@@ -57,7 +57,7 @@
   {
     "id": "PT1767694423459",
     "player_name": "g",
-    "status": "pending",
+    "status": "cancelled",
     "created_at": 1767694423459,
     "expired_at": 1767695323459,
     "total": 50000
@@ -65,7 +65,7 @@
   {
     "id": "PT1767694540760",
     "player_name": "s",
-    "status": "pending",
+    "status": "cancelled",
     "created_at": 1767694540760,
     "expired_at": 1767695440760,
     "total": 6000
@@ -73,7 +73,7 @@
   {
     "id": "PT1767694745769",
     "player_name": "h",
-    "status": "pending",
+    "status": "cancelled",
     "created_at": 1767694745769,
     "expired_at": 1767695645769,
     "total": 50000
