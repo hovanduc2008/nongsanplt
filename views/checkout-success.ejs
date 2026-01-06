@@ -1,133 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎉 Đặt hàng thành công</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Đặt hàng thành công</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background: #e8f5e9;
-            font-family: 'Quicksand', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .success-box {
-            background: white;
-            padding: 35px;
-            border-radius: 35px;
-            width: 100%;
-            max-width: 520px;
-            text-align: center;
-            box-shadow: 0 14px 0 #c8e6c9;
-        }
-
-        .icon {
-            font-size: 4rem;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            color: #2e7d32;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .player-box {
-            background: #e8f5e9;
-            border-radius: 20px;
-            padding: 12px;
-            margin: 15px 0;
-            font-weight: 700;
-            color: #2e7d32;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .player-box button {
-            background: #4CAF50;
-            border: none;
-            color: white;
-            padding: 6px 14px;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-        }
-
-        .order-id {
-            background: #f1f8e9;
-            border-radius: 20px;
-            padding: 12px;
-            margin: 15px 0;
-            font-weight: 700;
-            color: #388e3c;
-            font-size: 1.1rem;
-        }
-
-        .order-list {
-            text-align: left;
-            margin-top: 15px;
-            background: #fafafa;
-            border-radius: 20px;
-            padding: 15px;
-        }
-
-        .order-item {
-            border-bottom: 1px dashed #c8e6c9;
-            padding: 8px 0;
-            font-size: 0.95rem;
-        }
-
-        .order-item:last-child {
-            border-bottom: none;
-        }
-
-        .btn-copy {
-            margin-top: 25px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 14px 22px;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 25px;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 6px 0 #2e7d32;
-            transition: all 0.15s;
-        }
-
-        .btn-copy:hover {
-            background: #66bb6a;
-        }
-
-        .btn-copy:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #2e7d32;
-        }
-
-        .btn-home {
-            display: inline-block;
-            margin-top: 15px;
-            text-decoration: none;
-            color: #2e7d32;
-            font-weight: 700;
-        }
-    </style>
+<style>
+    body { background: #e8f5e9; font-family: 'Quicksand', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+    .success-box { background: white; padding: 35px; border-radius: 35px; width: 100%; max-width: 520px; text-align: center; box-shadow: 0 14px 0 #c8e6c9; }
+    .icon { font-size: 4rem; margin-bottom: 10px; }
+    h2 { color: #2e7d32; font-weight: 700; margin-bottom: 10px; }
+    .player-box { background: #e8f5e9; border-radius: 20px; padding: 12px; margin: 15px 0; font-weight: 700; color: #2e7d32; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .player-box button { background: #4CAF50; border: none; color: white; padding: 6px 14px; border-radius: 15px; font-weight: 700; font-size: 0.85rem; cursor: pointer; }
+    .order-id { background: #f1f8e9; border-radius: 20px; padding: 12px; margin: 15px 0; font-weight: 700; color: #388e3c; font-size: 1.1rem; }
+    .order-list { text-align: left; margin-top: 15px; background: #fafafa; border-radius: 20px; padding: 15px; }
+    .order-item { border-bottom: 1px dashed #c8e6c9; padding: 8px 0; font-size: 0.95rem; }
+    .order-item:last-child { border-bottom: none; }
+    .btn-copy { margin-top: 25px; background: #4CAF50; color: white; border: none; padding: 14px 22px; font-size: 1rem; font-weight: 700; border-radius: 25px; cursor: pointer; width: 100%; box-shadow: 0 6px 0 #2e7d32; transition: all 0.15s; }
+    .btn-copy:hover { background: #66bb6a; }
+    .btn-copy:active { transform: translateY(4px); box-shadow: 0 2px 0 #2e7d32; }
+    .btn-home { display: inline-block; margin-top: 15px; text-decoration: none; color: #2e7d32; font-weight: 700; }
+</style>
 </head>
 <body>
 
 <div class="success-box">
     <div class="icon">🎉</div>
-
     <h2>ĐẶT HÀNG THÀNH CÔNG</h2>
 
     <!-- 👤 TÊN NHÂN VẬT -->
@@ -154,64 +54,51 @@
         <% }) %>
     </div>
 
+    <!-- Copy & gửi -->
     <button class="btn-copy" id="btnCopyOrder">
-        📋 Copy Đơn & Gửi Messenger
+        📋 Copy Đơn & Gửi Messenger / Zalo
     </button>
 
-    <a href="/" class="btn-home">
-        🌾 Quay lại nông trại
-    </a>
+    <a href="/" class="btn-home">🌾 Quay lại nông trại</a>
 </div>
 
 <script>
-function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnCopyOrder');
+    if (!btn) return;
 
-// Copy tên nhân vật
-document.getElementById('btnCopyPlayer').addEventListener('click', () => {
-    const name = document.getElementById('playerName').innerText;
-    if (!navigator.clipboard) {
-        alert("❌ Trình duyệt không hỗ trợ copy clipboard.");
-        return;
-    }
-    navigator.clipboard.writeText(name).then(() => {
-        alert('✅ Đã copy tên nhân vật!');
-    }).catch(err => {
-        console.error(err);
-        alert('❌ Không thể copy tên nhân vật.');
-    });
-});
+    btn.addEventListener('click', () => {
+        if (!navigator.clipboard) {
+            alert("❌ Trình duyệt không hỗ trợ copy clipboard hoặc HTTPS chưa bật.");
+            return;
+        }
 
-// Copy toàn bộ đơn hàng & gửi Messenger
-document.getElementById('btnCopyOrder').addEventListener('click', () => {
-    const orderDiv = document.getElementById('orderData');
-    let text = `🧾 ĐƠN HÀNG ${orderDiv.dataset.orderId}
+        const orderDiv = document.getElementById('orderData');
+        let text = `🧾 ĐƠN HÀNG ${orderDiv.dataset.orderId}
 👤 Nhân vật: ${orderDiv.dataset.playerName}
 
 `;
 
-    <% items.forEach(i => { %>
-        text += "- <%= i.product_name %> | <%= i.variant %> | SL: <%= i.quantity %>\n";
-    <% }) %>
+        <% items.forEach(i => { %>
+            text += "- <%= i.product_name %> | <%= i.variant %> | SL: <%= i.quantity %>\n";
+        <% }) %>
 
-    if (!navigator.clipboard) {
-        alert("❌ Trình duyệt không hỗ trợ copy clipboard.");
-        return;
-    }
+        navigator.clipboard.writeText(text).then(() => {
+            const messengerId = "hai.nguyen.926111";
+            const zaloPhone = "0123456789";
 
-    navigator.clipboard.writeText(text).then(() => {
-        const messengerId = "hai.nguyen.926111";
-        const link = `https://m.me/${messengerId}`;
-
-        if (isMobile()) {
-            window.location.href = link;
-        } else {
-            window.open(link, "_blank");
-        }
-    }).catch(err => {
-        console.error("Clipboard write failed:", err);
-        alert("❌ Không thể copy đơn hàng, vui lòng thử lại.");
+            const choice = confirm("✅ Đã copy đơn hàng!\n\nOK: Gửi Messenger\nCancel: Gửi Zalo");
+            if (choice) {
+                const link = `https://m.me/${messengerId}`;
+                window.open(link, "_blank");
+            } else {
+                const link = `https://zalo.me/${zaloPhone}`;
+                window.open(link, "_blank");
+            }
+        }).catch(err => {
+            console.error(err);
+            alert("❌ Không thể copy đơn hàng. Đảm bảo bạn dùng HTTPS và trình duyệt hỗ trợ Clipboard API.");
+        });
     });
 });
 </script>
