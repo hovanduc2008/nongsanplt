@@ -10,7 +10,7 @@ const HOST = '0.0.0.0';
 // ================= VIEW ENGINE =================
 // Cấu hình view engine
 app.set('view engine', 'ejs');          // EJS
-app.set('views', __dirname + '/views'); // Thư mục views
+app.set('views', path.join(__dirname, 'views')); // Thư mục views
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
