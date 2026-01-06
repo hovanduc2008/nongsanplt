@@ -1,0 +1,65 @@
+body {
+    background: #e8f5e9;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.farm-header {
+    background: #8d6e63;
+    color: white;
+    padding: 30px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 6px #5d4037;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 8px #c8e6c9;
+    margin-bottom: 25px;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.img-box {
+    background: #fff9c4;
+    padding: 20px;
+    border-radius: 30px 30px 0 0;
+    text-align: center;
+}
+
+.img-box img {
+    width: 90px;
+}
+
+.badge-he {
+    background: #ffecb3;
+    color: #ff9800;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.price {
+    color: #e53935;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.btn-buy {
+    background: #4caf50;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0 4px #2e7d32;
+}
+
+.btn-buy:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Bí",
+    "icon": "",
+    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+  },
+  {
+    "id": 2,
+    "name": "Dưa hấu",
+    "icon": "",
+    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+  },
+  {
+    "id": 3,
+    "name": "Nhân sâm",
+    "icon": "",
+    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+  }
+]

@@ -1,0 +1,16 @@
+{"name": "playtogether-farm",
+  "version": "1.0.0",
+  "description": "Farm Shop using Node.js and JSON",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js --ext js,ejs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "nodemon": "^3.1.11"
+  }
+}

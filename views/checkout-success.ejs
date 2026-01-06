@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Đặt hàng thành công</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #e8f5e9;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .success-box {
+            background: white;
+            padding: 35px;
+            border-radius: 35px;
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            box-shadow: 0 14px 0 #c8e6c9;
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #2e7d32;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .player-box {
+            background: #e8f5e9;
+            border-radius: 20px;
+            padding: 12px;
+            margin: 15px 0;
+            font-weight: 700;
+            color: #2e7d32;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .player-box button {
+            background: #4CAF50;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .order-id {
+            background: #f1f8e9;
+            border-radius: 20px;
+            padding: 12px;
+            margin: 15px 0;
+            font-weight: 700;
+            color: #388e3c;
+            font-size: 1.1rem;
+        }
+
+        .order-list {
+            text-align: left;
+            margin-top: 15px;
+            background: #fafafa;
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        .order-item {
+            border-bottom: 1px dashed #c8e6c9;
+            padding: 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn-copy {
+            margin-top: 25px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 14px 22px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 6px 0 #2e7d32;
+            transition: all 0.15s;
+        }
+
+        .btn-copy:hover {
+            background: #66bb6a;
+        }
+
+        .btn-copy:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #2e7d32;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2e7d32;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+<div class="success-box">
+    <div class="icon">🎉</div>
+
+    <h2>ĐẶT HÀNG THÀNH CÔNG</h2>
+
+    <!-- 👤 TÊN NHÂN VẬT -->
+    <div class="player-box">
+        <span>👤 Nhân vật: <b id="playerName"><%= playerName %></b></span>
+        <button onclick="copyPlayer()">📋 Copy</button>
+    </div>
+
+    <!-- 🧾 MÃ ĐƠN -->
+    <div class="order-id">
+        🧾 Mã đơn: <%= orderId %>
+    </div>
+
+    <!-- 🌾 DANH SÁCH -->
+    <div class="order-list">
+        <% items.forEach(i => { %>
+            <div class="order-item">
+                🌾 <b><%= i.product_name %></b>
+                | <%= i.variant %>
+                | SL: <%= i.quantity %>
+            </div>
+        <% }) %>
+    </div>
+
+    <button class="btn-copy" onclick="copyOrder()">
+        📋 Copy Đơn & Gửi Messenger
+    </button>
+
+    <a href="/" class="btn-home">
+        🌾 Quay lại nông trại
+    </a>
+</div>
+
+<script>
+function isMobile() {
+    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function copyPlayer() {
+    const name = document.getElementById('playerName').innerText;
+    navigator.clipboard.writeText(name).then(() => {
+        alert('✅ Đã copy tên nhân vật!');
+    });
+}
+
+function copyOrder() {
+    let text = 
+`🧾 ĐƠN HÀNG <%= orderId %>
+👤 Nhân vật: <%= playerName %>
+
+`;
+
+    <% items.forEach(i => { %>
+        text += "- <%= i.product_name %> | <%= i.variant %> | SL: <%= i.quantity %>\n";
+    <% }) %>
+
+    navigator.clipboard.writeText(text).then(() => {
+        const messengerId = "hai.nguyen.926111"; // 🔁 đổi nếu cần
+        const link = `https://m.me/${messengerId}`;
+
+        if (isMobile()) {
+            window.location.href = link;
+        } else {
+            window.open(link, "_blank");
+        }
+    });
+}
+</script>
+
+</body>
+</html>
