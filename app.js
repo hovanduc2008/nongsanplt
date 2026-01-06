@@ -12,7 +12,7 @@ const HOST = '0.0.0.0';
 app.set('view engine', 'ejs');          // EJS
 app.set('views', path.join(__dirname, 'views')); // Thư mục views
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 const { ensureAdmin } = require('./middlewares/auth');
 
@@ -39,13 +39,13 @@ const writeJSON = (p, data) =>
     fs.writeFileSync(p, JSON.stringify(data, null, 2));
 
 // ================= DATA PATH =================
-const DATA = './data';
-const PRODUCTS_PATH = `${DATA}/products.json`;
-const VARIANTS_PATH = `${DATA}/variants.json`;
-const PV_PATH = `${DATA}/product_variants.json`;
-const ORDERS_PATH = `${DATA}/orders.json`;
-const ORDER_ITEMS_PATH = `${DATA}/order_items.json`;
-const ADMIN_PATH  = `${DATA}/admins.json`;
+const DATA = path.join(__dirname, 'data');
+const PRODUCTS_PATH = path.join(DATA, 'products.json');
+const VARIANTS_PATH = path.join(DATA, 'variants.json');
+const PV_PATH = path.join(DATA, 'product_variants.json');
+const ORDERS_PATH = path.join(DATA, 'orders.json');
+const ORDER_ITEMS_PATH = path.join(DATA, 'order_items.json');
+const ADMIN_PATH  = path.join(DATA, 'admins.json');
 
 // ================= BUILD SHOP DATA =================
 function getShopData() {
