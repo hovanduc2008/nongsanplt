@@ -17,8 +17,8 @@
             font-family: 'Quicksand', sans-serif;
         }
 
-        /* HEADER */
-        .farm-header {
+        /* HEADER - Responsive Banner */
+        .banner {
             background: #795548;
             color: white;
             padding: 35px 20px;
@@ -26,6 +26,31 @@
             border-radius: 0 0 40px 40px;
             margin-bottom: 25px;
             text-align: center;
+
+            width: 100%;
+            height: 0;               /* tạm đặt 0, dùng padding-bottom để tạo tỷ lệ */
+            padding-bottom: 40%;     /* tỉ lệ chiều cao so với chiều rộng (ví dụ 40%) */
+            
+            background-image: url('/images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;           /* để căn giữa nội dung bên trong */
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                padding-bottom: 50%; /* cao hơn cho màn nhỏ */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                padding-bottom: 40%; /* banner cao hơn cho điện thoại */
+            }
         }
 
         /* FILTER */
@@ -97,9 +122,8 @@
 <body>
 
 <!-- HEADER -->
-<div class="farm-header">
-    <h1>🏡 Play Together Farm 🌾</h1>
-    <p class="mb-0">Sản phẩm Play Together</p>
+<div class="banner">
+    
 </div>
 
 <!-- CART -->
