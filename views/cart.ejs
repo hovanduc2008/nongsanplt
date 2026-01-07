@@ -14,97 +14,168 @@
 
     <style>
         body {
-            background:#e8f5e9;
-            font-family:'Quicksand',sans-serif;
+            background: #e8f5e9;
+            font-family: 'Quicksand', sans-serif;
         }
 
         .cart-box {
-            background:#fff;
-            border-radius:30px;
-            padding:30px;
-            box-shadow:0 12px 0 #c8e6c9;
+            background: #fff;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 12px 0 #c8e6c9;
         }
 
         h2 {
-            font-weight:700;
-            color:#2e7d32;
+            font-weight: 700;
+            color: #2e7d32;
         }
 
+        /* ===== PLAYER ===== */
+        .player-box {
+            background: #f1f8e9;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        /* ===== CART ITEM ===== */
         .cart-item {
-            border-bottom:2px dashed #c8e6c9;
-            padding:15px 0;
+            border-bottom: 2px dashed #c8e6c9;
+            padding: 15px 0;
         }
 
         .item-name {
-            font-weight:700;
-            font-size:1.05rem;
+            font-weight: 700;
+            font-size: 1.05rem;
         }
 
         .item-he {
-            font-size:.85rem;
-            background:#f1f8e9;
-            padding:4px 12px;
-            border-radius:15px;
-            display:inline-block;
-            margin-top:4px;
+            font-size: .85rem;
+            background: #f1f8e9;
+            padding: 4px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            margin-top: 4px;
         }
 
         .qty-box {
-            display:flex;
-            align-items:center;
-            gap:10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .qty-btn {
-            width:34px;
-            height:34px;
-            border-radius:50%;
-            border:none;
-            background:#4CAF50;
-            color:#fff;
-            font-weight:700;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            background: #4CAF50;
+            color: #fff;
+            font-weight: 700;
         }
 
         .qty-btn:disabled {
-            background:#ccc;
-        }
-
-        .remove-btn {
-            background:#ff5252;
-            color:#fff;
-            border:none;
-            padding:6px 14px;
-            border-radius:15px;
-            font-weight:700;
+            background: #ccc;
         }
 
         .price {
-            font-weight:700;
-            color:#ff5252;
+            font-weight: 700;
+            color: #ff5252;
         }
 
+        .remove-btn {
+            background: #ff5252;
+            color: #fff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-weight: 700;
+        }
+
+        /* ===== TOTAL ===== */
         .total-box {
-            background:#f1f8e9;
-            padding:20px;
-            border-radius:20px;
-            margin-top:25px;
-            text-align:right;
+            background: #f1f8e9;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 25px;
+            text-align: right;
         }
 
         .btn-back {
-            background:#4CAF50;
-            color:#fff;
-            border-radius:20px;
-            padding:10px 25px;
-            font-weight:700;
-            text-decoration:none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #4CAF50;
+            color: #fff;
+            border-radius: 20px;
+            padding: 10px 25px;
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .player-box {
-            background:#f1f8e9;
-            border-radius:20px;
-            padding:20px;
-            margin-bottom:25px;
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 768px) {
+
+            .cart-box {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .cart-item > div {
+                text-align: center;
+            }
+
+            .qty-box {
+                justify-content: center;
+                margin: 10px 0;
+            }
+
+            .price {
+                font-size: 1.1rem;
+                margin-top: 5px;
+            }
+
+            .remove-btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .total-box {
+                text-align: center;
+            }
+
+            #checkoutForm .action-box {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            #checkoutForm a,
+            #checkoutForm button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .qty-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 14px;
+            }
+
+            .player-box {
+                padding: 15px;
+            }
+        }
+
+        .cart_icon {
+            width: 50px;
+            height: 50px;
         }
     </style>
 </head>
@@ -113,28 +184,28 @@
 <div class="container my-5">
 <div class="cart-box">
 
-<h2 class="mb-4">🧺 Giỏ Hàng</h2>
+<h2 class="mb-4"><img class = "cart_icon" src="/images/giohang.png" alt=""> Giỏ Hàng</h2>
 
 <% if (cart.length === 0) { %>
 
     <!-- EMPTY CART -->
-    <p class="fw-bold">🌱 Giỏ hàng trống</p>
-    <a href="/" class="btn-back">🌾 Quay lại nông trại</a>
+    <p class="fw-bold text-center">🌱 Giỏ hàng trống</p>
+    <div class="text-center">
+        <a href="/" class="btn-back">🌾 Quay lại nông trại</a>
+    </div>
 
 <% } else { %>
 
-<!-- 👤 PLAYER NAME -->
+<!-- PLAYER -->
 <div class="player-box">
     <label class="fw-bold">👤 Tên nhân vật Play Together</label>
-    <input
-        id="player_name"
-        class="form-control mt-2"
-        placeholder="DucFarm, FarmerVN..."
-        required
-    >
+    <input id="player_name"
+           class="form-control mt-2"
+           placeholder="DucFarm, FarmerVN..."
+           required>
 </div>
 
-<!-- 🧺 CART ITEMS -->
+<!-- CART ITEMS -->
 <% cart.forEach(item => { %>
 <div class="cart-item row align-items-center gy-3">
 
@@ -145,7 +216,6 @@
 
     <div class="col-md-3">
         <div class="qty-box">
-
             <form action="/cart/update/<%= item.pv_id %>" method="POST">
                 <input type="hidden" name="action" value="decrease">
                 <button class="qty-btn" <%= item.qty <= 1 ? 'disabled' : '' %>>−</button>
@@ -157,7 +227,6 @@
                 <input type="hidden" name="action" value="increase">
                 <button class="qty-btn">+</button>
             </form>
-
         </div>
     </div>
 
@@ -186,8 +255,8 @@
 <form id="checkoutForm" action="/checkout" method="POST">
     <input type="hidden" name="player_name" id="playerHidden">
 
-    <div class="mt-4 d-flex justify-content-between">
-        <a href="/" class="btn-back">🌾 Tiếp tục</a>
+    <div class="mt-4 d-flex justify-content-between action-box">
+        <a href="/" class="btn-back"><< Quay lại</a>
 
         <button type="submit"
                 class="btn btn-warning px-4 py-2 rounded-pill fw-bold">

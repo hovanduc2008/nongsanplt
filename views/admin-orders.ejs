@@ -87,9 +87,11 @@
                 </tr>
             </thead>
             <tbody>
-                <% orders.forEach(order => { 
-                    const items = orderItems.filter(i => i.order_id === order.id);
-                    const total = items.reduce((sum,i)=>sum+i.price*i.quantity,0);
+                <% orders
+                    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                    .forEach(order => { 
+                        const items = orderItems.filter(i => i.order_id === order.id);
+                        const total = items.reduce((sum,i)=>sum+i.price*i.quantity,0);
                 %>
                 <tr data-status="<%= order.status %>">
                     <td class="order-id"><%= order.id %></td>
@@ -119,6 +121,7 @@
                     </td>
                 </tr>
                 <% }) %>
+
             </tbody>
         </table>
 

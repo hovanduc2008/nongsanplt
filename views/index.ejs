@@ -82,6 +82,8 @@
             justify-content: center;
             align-items: center;
             border-radius: 30px 30px 0 0;
+            background-image: url('/images/nen.jpg');
+            background-size: cover;
         }
 
         .badge-he {
@@ -107,6 +109,20 @@
             border: none;
             font-weight: 700;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .btn-buy .thuhoach_icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .btn-buy p {
+            margin-bottom: 0;
         }
 
         .btn-buy:active {
@@ -116,6 +132,28 @@
         .btn-disabled {
             background: #bdbdbd !important;
             cursor: not-allowed;
+        }
+
+        .cart_box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart_btn {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart_btn p {
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .cart_icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -127,9 +165,10 @@
 </div>
 
 <!-- CART -->
-<div class="text-center mb-4">
-    <a href="/cart" class="btn btn-success rounded-pill fw-bold px-4">
-        🛒 XEM GIỎ HÀNG
+<div class="cart_box mb-4">
+    <a href="/cart" class="cart_btn btn btn-success rounded-pill fw-bold px-4">
+        <img src="/images/giohang.png" alt="" class = "cart_icon"> 
+         <p>XEM GIỎ HÀNG</p>
     </a>
 </div>
 
@@ -162,46 +201,52 @@
 <div class="container">
     <div class="row g-4">
 
-        <% products.forEach(p => { %>
-        <div class="col-md-4 col-sm-6 product-wrapper"
-             data-product="<%= p.name %>"
-             data-variant="<%= p.he %>">
+        <% products
+            .sort((a, b) => b.name.localeCompare(a.name, 'vi', { sensitivity: 'base' }))
+            .forEach(p => { %>
 
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="<%= p.img %>" alt="<%= p.name %>" height="110">
-                </div>
+            <div class="col-md-4 col-sm-6 product-wrapper"
+                data-product="<%= p.name %>"
+                data-variant="<%= p.he %>">
 
-                <div class="p-4 text-center">
-                    <span class="badge-he"><%= p.icon %> <%= p.he %></span>
-
-                    <h5 class="fw-bold mt-2 text-success">
-                        <%= p.name %>
-                    </h5>
-
-                    <div class="price">
-                        <%= p.price.toLocaleString() %>đ
+                <div class="product-card">
+                    <div class="img-box">
+                        <img src="<%= p.img %>" alt="<%= p.name %>" height="110">
                     </div>
 
-                    <p class="text-muted fw-bold">
-                        Còn lại: <%= p.quantity %>
-                    </p>
+                    <div class="p-4 text-center">
+                        <span class="badge-he" style = "background-color: <%= p.color %>"><%= p.icon %> <%= p.he %></span>
 
-                    <% if (p.quantity > 0) { %>
-                        <form action="/add-to-cart/<%= p.pv_id %>" method="POST">
-                            <button type="submit" class="btn-buy">
-                                🌾 THU HOẠCH
+                        <h5 class="fw-bold mt-2 text-success">
+                            <%= p.name %>
+                        </h5>
+
+                        <div class="price">
+                            <%= p.price.toLocaleString() %>đ
+                        </div>
+
+                        <p class="text-muted fw-bold">
+                            Còn lại: <%= p.quantity %>
+                        </p>
+
+                        <% if (p.quantity > 0) { %>
+                            <form action="/add-to-cart/<%= p.pv_id %>" method="POST">
+                                <button type="submit" class="btn-buy">
+                                    <img class = "thuhoach_icon" src="/images/thuhoach.png" alt="">
+                                    <p>
+                                        THU HOẠCH
+                                    </p>
+                                </button>
+                            </form>
+                        <% } else { %>
+                            <button class="btn-buy btn-disabled" disabled>
+                                HẾT HÀNG
                             </button>
-                        </form>
-                    <% } else { %>
-                        <button class="btn-buy btn-disabled" disabled>
-                            HẾT HÀNG
-                        </button>
-                    <% } %>
+                        <% } %>
+                    </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         <% }) %>
 
     </div>

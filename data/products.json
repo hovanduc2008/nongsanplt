@@ -3,18 +3,24 @@
     "id": 1,
     "name": "Bí",
     "icon": "",
-    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+    "image": "/images/bi.png"
   },
   {
     "id": 2,
     "name": "Dưa hấu",
     "icon": "",
-    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+    "image": "/images/duahau.png"
   },
   {
     "id": 3,
     "name": "Nhân sâm",
     "icon": "",
-    "image": "https://cdn-icons-png.flaticon.com/512/415/415682.png"
+    "image": "/images/nhansam.png"
+  },
+  {
+    "id": 4,
+    "name": "Xu (1 triệu)",
+    "icon": "",
+    "image": "/images/xu.png"
   }
 ]

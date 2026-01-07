@@ -2,51 +2,51 @@
   {
     "id": 1,
     "name": "Thường",
-    "color": "#ffffff"
+    "color": "#e8e8e8"
   },
   {
     "id": 2,
     "name": "Ẩm ướt",
-    "color": "#ffd700"
+    "color": "#89b5ff"
   },
   {
     "id": 3,
     "name": "Cầu Vồng",
-    "color": "#ff69b4"
+    "color": "#faecc9"
   },
   {
     "id": 4,
     "name": "Điện",
-    "color": "#ff69b4"
+    "color": "#fff889"
   },
   {
     "id": 5,
     "name": "Khô",
-    "color": "#ff69b4"
+    "color": "#f79f21"
   },
   {
     "id": 6,
     "name": "Cát",
-    "color": "#ff69b4"
+    "color": "#ffcf4c"
   },
   {
     "id": 7,
     "name": "Ánh trăng",
-    "color": "#ff69b4"
+    "color": "#b579ff"
   },
   {
     "id": 8,
     "name": "Cực quang",
-    "color": "#ff69b4"
+    "color": "#00ffc0"
   },
   {
     "id": 9,
     "name": "Gió",
-    "color": "#ff69b4"
+    "color": "#6fe880"
   },
   {
     "id": 10,
     "name": "Ánh vàng",
-    "color": "#ff69b4"
+    "color": "#ffde00"
   }
 ]
