@@ -155,6 +155,34 @@
             height: 30px;
             margin-right: 10px;
         }
+
+        /* CART COUNT BADGE */
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff5252;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Mobile chỉnh nhẹ */
+        @media (max-width: 480px) {
+            .cart-count {
+                top: -6px;
+                right: -6px;
+                font-size: 0.7rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -166,9 +194,17 @@
 
 <!-- CART -->
 <div class="cart_box mb-4">
-    <a href="/cart" class="cart_btn btn btn-success rounded-pill fw-bold px-4">
-        <img src="/images/giohang.png" alt="" class = "cart_icon"> 
-         <p>XEM GIỎ HÀNG</p>
+    <a href="/cart" class="cart_btn btn btn-success rounded-pill fw-bold px-4 position-relative">
+
+        <img src="/images/giohang.png" alt="" class="cart_icon">
+        <p>XEM GIỎ HÀNG</p>
+
+        <% if (cart && cart.length > 0) { %>
+            <span class="cart-count">
+                <%= cart.length %>
+            </span>
+        <% } %>
+
     </a>
 </div>
 

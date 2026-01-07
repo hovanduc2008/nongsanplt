@@ -144,7 +144,7 @@
     "product_id": 3,
     "variant_id": 2,
     "price": 25000,
-    "quantity": 1
+    "quantity": 0
   },
   {
     "id": 1767785539359,
@@ -207,6 +207,6 @@
     "product_id": 4,
     "variant_id": 1,
     "price": 5000,
-    "quantity": 76
+    "quantity": 56
   }
 ]
