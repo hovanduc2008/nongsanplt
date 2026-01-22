@@ -6,7 +6,7 @@ const fs = require("fs");
 const cron = require("node-cron");
 
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 const NEWS_FILE = "./data/news.json";
 
 /* ================== FILE UTILS ================== */
