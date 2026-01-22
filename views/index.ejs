@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULSE PRIME PRO</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#02030a" />
+
+  <!-- FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#02030a;
+      --border:rgba(255,255,255,.18);
+      --text:#f9fafb;
+      --muted:#9ca3af;
+      --accent:#7c7cff;
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:Inter,sans-serif;
+      background:
+        radial-gradient(900px 500px at 15% -10%,#1e2155,transparent 60%),
+        radial-gradient(700px 400px at 90% 10%,#0f172a,transparent 55%),
+        var(--bg);
+      color:var(--text);
+      overflow:hidden;
+    }
+
+    header{
+      position:fixed;
+      top:16px;
+      left:50%;
+      transform:translateX(-50%);
+      width:calc(100% - 32px);
+      max-width:420px;
+      display:flex;
+      justify-content:space-between;
+      font-size:12px;
+      color:var(--muted);
+      z-index:10;
+    }
+
+    .viewport{
+      position:relative;
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:90px 20px 120px;
+      overflow:hidden;
+    }
+
+    .card{
+      position:absolute;
+      width:100%;
+      max-width:420px;
+      min-height:520px;
+      background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:44px;
+      padding:42px;
+      backdrop-filter:blur(16px);
+      box-shadow:0 30px 80px rgba(0,0,0,.45);
+      transition:
+        transform .55s cubic-bezier(.16,1,.3,1),
+        opacity .45s ease;
+    }
+
+    .card.enter{
+      transform:translateY(80px) scale(.96);
+      opacity:0;
+    }
+
+    .card.active{
+      transform:translateY(0) scale(1);
+      opacity:1;
+      z-index:2;
+    }
+
+    .card.exit{
+      transform:translateY(-80px) scale(.96);
+      opacity:0;
+      z-index:1;
+    }
+
+    .tag{
+      font-size:11px;
+      letter-spacing:1.4px;
+      text-transform:uppercase;
+      color:#cdd3ff;
+    }
+
+    h1{
+      font-size:32px;
+      line-height:1.15;
+      margin:22px 0 16px;
+    }
+
+    .summary{
+      font-size:18px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    .insight{
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.15);
+      font-size:15px;
+    }
+
+    .news-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      color:var(--accent);
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    .news-link:hover{
+      text-decoration:underline;
+      opacity:.8;
+    }
+
+    .hint{
+      position:fixed;
+      bottom:26px;
+      left:50%;
+      transform:translateX(-50%);
+      font-size:12px;
+      color:var(--muted);
+      opacity:.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <span>LIVE</span>
+  <span>PULSE PRIME PRO</span>
+</header>
+
+<div class="viewport" id="viewport"></div>
+
+<div class="hint">⬆ Vuốt · Lăn chuột · ↓ để xem tin</div>
+
+<script>
+/* ========================= DATA FROM SSR ========================= */
+const news = <%- JSON.stringify(news || []) %>;
+let index = 0;
+let locked = false;
+
+const viewport = document.getElementById("viewport");
+let currentCard = null;
+
+function createCard(n){
+  const el = document.createElement("div");
+  el.className = "card enter";
+  el.innerHTML = `
+    <div class="tag">${n.tag}</div>
+    <h1>${n.title}</h1>
+    <div class="summary">${n.summary}</div>
+    <div class="insight">
+      <a href="${n.url}" target="_blank" class="news-link">
+        🔗 Đọc bài báo gốc
+      </a>
+    </div>
+  `;
+  return el;
+}
+
+function showNext(){
+  if(locked) return;
+  if(index >= news.length){
+    location.reload();
+    return;
+  }
+
+  locked = true;
+  const n = news[index++];
+  const nextCard = createCard(n);
+  viewport.appendChild(nextCard);
+
+  requestAnimationFrame(() => {
+    nextCard.classList.remove("enter");
+    nextCard.classList.add("active");
+
+    if(currentCard){
+      currentCard.classList.remove("active");
+      currentCard.classList.add("exit");
+    }
+  });
+
+  setTimeout(() => {
+    if(currentCard) currentCard.remove();
+    currentCard = nextCard;
+    locked = false;
+  }, 550);
+}
+
+/* INIT */
+showNext();
+
+/* ========================= INPUT ========================= */
+let startY = 0;
+
+/* MOBILE */
+viewport.addEventListener("touchstart", e => {
+  startY = e.touches[0].clientY;
+});
+
+viewport.addEventListener("touchend", e => {
+  if(startY - e.changedTouches[0].clientY > 60){
+    showNext();
+  }
+});
+
+/* DESKTOP */
+window.addEventListener("wheel", e => {
+  if(e.deltaY > 40){
+    showNext();
+  }
+});
+
+/* KEYBOARD */
+window.addEventListener("keydown", e => {
+  if(e.key === "ArrowDown" || e.key === " "){
+    showNext();
+  }
+});
+
+/* ========================= SERVICE WORKER ========================= */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .then(() => console.log("✅ PWA Ready"))
+      .catch(err => console.error("❌ SW error", err));
+  });
+}
+</script>
+
+</body>
+</html>
